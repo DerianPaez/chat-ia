@@ -4,6 +4,7 @@
     "moduleDetection": "force",
     "module": "ESNext",
     "target": "ESNext",
+    "moduleResolution": "bundler",
     "allowJs": true,
     "esModuleInterop": true,
     "isolatedModules": true
