@@ -1,17 +1,16 @@
-import express from "express";
-import supabase from "../config/supabase-client";
+import express, { Request, Response } from "express";
+import dotenv from "dotenv";
+import authRoutes from "./modules/auth/routes/auth.routes";
 
 const app = express();
+dotenv.config();
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+app.use("/api/auth", authRoutes);
 
-app.get("/users", async (req, res) => {
-  const users = await supabase.from("users").select();
-  res.json(users);
+app.get("/health", (req: Request, res: Response) => {
+  res.json({ status: "OK", message: "Servidor funcionando" });
 });
 
 const PORT = process.env.PORT || 3000;
